@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "0a22dfd78af2df5d3773098f879fa33ee9a6e8de5d5e83f89a8abceae8ca624e"
+            "sha256": "a8963f60a1e7b72d5a830d974326bb3a8492d91869717cae11cac8e1618bd11e"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -220,6 +220,13 @@
             ],
             "markers": "python_version >= '3.11' and platform_python_implementation == 'CPython'",
             "version": "==3.0.3"
+        },
+        "playsound": {
+            "hashes": [
+                "sha256:1e83750a5325cbccee03d6e751ba3e78c037ac95b95a3ba1f38d0c5aca9e1a34"
+            ],
+            "index": "pypi",
+            "version": "==1.2.2"
         },
         "pycparser": {
             "hashes": [

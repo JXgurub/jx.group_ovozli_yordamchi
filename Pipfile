@@ -6,6 +6,7 @@ name = "pypi"
 [packages]
 shell = "*"
 eel = "*"
+playsound = "==1.2.2"
 
 [dev-packages]
 
