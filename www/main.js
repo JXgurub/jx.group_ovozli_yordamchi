@@ -8,7 +8,7 @@ $(document).ready(function (){
         out:{
             effect: "bounceOut",
         },
-    })
+    });
 
     // siri configration
 
@@ -18,10 +18,10 @@ $(document).ready(function (){
         height: 200,
         style: "ios9",
         amplitude: "1",
-        speed: "0.30",
-        autostart: true
-      });
-
+        speed: "0.2",
+        autostart: true,
+    
+      })
 
       ///Siri message animation
 
@@ -44,6 +44,7 @@ $(document).ready(function (){
         eel.playAssistantSound();
         $("#Oval").attr("hidden", true);
         $("#SiriWave").attr("hidden", false);
+        eel.takecommand()()
     });
 });
 
