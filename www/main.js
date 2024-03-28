@@ -18,7 +18,7 @@ $(document).ready(function (){
         height: 200,
         style: "ios9",
         amplitude: "1",
-        speed: "0.40",
+        speed: "0.30",
         autostart: true
       });
 
@@ -37,5 +37,13 @@ $(document).ready(function (){
             sync: true,
         },
     })
+
+    // mic button click event
+
+    $("#MicBtn").click(function (e){
+        eel.playAssistantSound();
+        $("#Oval").attr("hidden", true);
+        $("#SiriWave").attr("hidden", false);
+    });
 });
 
