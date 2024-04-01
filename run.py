@@ -14,7 +14,7 @@ def listenHotword():
         from engine.features import hotword
         hotword()
 
-
+ 
     # Start both processes
 if __name__ == '__main__':
         p1 = multiprocessing.Process(target=startJarvis)
