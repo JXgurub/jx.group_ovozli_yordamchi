@@ -30,7 +30,7 @@ cursor.execute(query)
 # bu yerda malumotlar bazasiga sayt linklari qo'shiladi
 
 
-query = "INSERT INTO web_command VALUES (null,'google', 'https://www.google.com/')"
+query = "INSERT INTO web_command VALUES (null,'instagram', 'https://www.instagram.com/')"
 cursor.execute(query)
 conn.commit()
 
