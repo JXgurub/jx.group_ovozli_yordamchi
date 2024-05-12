@@ -1,2 +1,1 @@
-# jx.group_ovozli_yordamchi
- fro-tend
+alexa avozli yordamchi bo'lib bu sizga whatsabda avoz orqali sms yuborish rasim tashlash va malumotlar olishda yordam beradi siz avoz orqali biron narsa so'rasanggiz u sizga text variyadi  va avozda gapirib berish imkoniyatiga ega 
