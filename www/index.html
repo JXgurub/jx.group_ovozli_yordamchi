@@ -1,12 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="uz">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JXgroup</title>
+    <meta name="theme-color" content="#07131b">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="liza-api-url" content="/api/liza/command/">
+    <meta name="liza-csrf-url" content="/api/liza/csrf/">
+    <link rel="manifest" href="manifest.webmanifest">
+    <link rel="apple-touch-icon" href="assets/img/pwa-192.png">
+    <title>Liza | G-med yordamchisi</title>
 
-    <link rel="shortcut icon" href="assets/img/logo.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="assets/img/pwa-192.png" type="image/png">
 
     <!-- Bootsrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -57,12 +64,13 @@
                         <div class="text-center">
                             <div id="TextInput" class="d-flex">
 
-                                <input type="_text" class="input-field" name="chatbox" id="chatbox"
+                                <input type="text" class="input-field" name="chatbox" id="chatbox"
                                     placeholder="type here ... ">
                                 <button id="SendBtn" class="glow-on-hover" hidden><i class="bi bi-send"></i></button>
-                                <button id="MicBtn" class="glow-on-hover"><i class="bi bi-mic"></i></button>
+                                <button id="MicBtn" class="glow-on-hover" type="button" aria-label="Ovozli buyruq"><i class="bi bi-mic"></i></button>
                                 <button id="ChatBtn" class="glow-on-hover" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling"><i class="bi bi-chat-dots"></i></button>
                                 <button id="SettingsBtn" class="glow-on-hover"><i class="bi bi-gear"></i></button>
+                                <button id="InstallBtn" class="glow-on-hover" type="button" aria-label="Liza ilovasini o'rnatish" title="Ilovani o'rnatish" hidden><i class="bi bi-download"></i></button>
 
                             </div>
                         </div>
@@ -81,7 +89,7 @@
                     <div class="col-md-12">
                         <div class="d-flex justify-content-center align-items-center" style="height: 100vh;">
                             <div class="">
-                                <p class="text-start text-light mb-4 siri-message" style="font-size: 28px;">Assalomu alaykum meni ismim Alexa</p>
+                                <p class="text-start text-light mb-4 siri-message text-center" style="font-size: 28px;">Assalomu alaykum, mening ismim Liza</p>
                                 <div id="siri-container"></div>
                             </div>
 
@@ -126,9 +134,13 @@
     <script src="assets/vendore/texllate/jquery.lettering.js"></script>
     <script src="http://jschr.github.io/textillate/jquery.textillate.js"></script>
 
-    <script src="main.js"></script>
+    <script>
+        if (new URLSearchParams(window.location.search).get("desktop") === "1") {
+            document.write('<script src="/eel.js"><\/script>');
+        }
+    </script>
     <script src="controller.js"></script>
-    <script src="/eel.js"></script>
+    <script src="assistant-client.js"></script>
 
 
 </body>

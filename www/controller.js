@@ -1,4 +1,5 @@
 $(document).ready(function () {
+    if (!window.eel || typeof window.eel.expose !== "function") return;
 
 
 
@@ -11,6 +12,27 @@ $(document).ready(function () {
 
     }
 
+    function appendChatMessage(message, role) {
+        var text = String(message || "");
+        if (text.trim() === "") {
+            return;
+        }
+
+        var chatBox = document.getElementById("chat-canvas-body");
+        var row = document.createElement("div");
+        var width = document.createElement("div");
+        var bubble = document.createElement("div");
+
+        row.className = "row justify-content-" + (role === "sender" ? "end" : "start") + " mb-4";
+        width.className = "width-size";
+        bubble.className = role + "_message";
+        bubble.textContent = text;
+        width.appendChild(bubble);
+        row.appendChild(width);
+        chatBox.appendChild(row);
+        chatBox.scrollTop = chatBox.scrollHeight;
+    }
+
     // Display hood
     eel.expose(ShowHood)
     function ShowHood() {
@@ -20,33 +42,12 @@ $(document).ready(function () {
 
     eel.expose(senderText)
     function senderText(message) {
-        var chatBox = document.getElementById("chat-canvas-body");
-        if (message.trim() !== "") {
-            chatBox.innerHTML += `<div class="row justify-content-end mb-4">
-            <div class = "width-size">
-            <div class="sender_message">${message}</div>
-        </div>`; 
-    
-            // Scroll to the bottom of the chat box
-            chatBox.scrollTop = chatBox.scrollHeight;
-        }
+        appendChatMessage(message, "sender");
     }
 
     eel.expose(receiverText)
     function receiverText(message) {
-
-        var chatBox = document.getElementById("chat-canvas-body");
-        if (message.trim() !== "") {
-            chatBox.innerHTML += `<div class="row justify-content-start mb-4">
-            <div class = "width-size">
-            <div class="receiver_message">${message}</div>
-            </div>
-        </div>`; 
-    
-            // Scroll to the bottom of the chat box
-            chatBox.scrollTop = chatBox.scrollHeight;
-        }
-        
+        appendChatMessage(message, "receiver");
     }
 
 

@@ -8,8 +8,16 @@ shell = "*"
 eel = "*"
 playsound = "==1.2.2"
 pyttsx3 = "*"
+edge-tts = "==7.2.8"
 speechrecognition = "*"
-pvporcupine = "*"
+vosk = "==0.3.45"
+pywhatkit = "*"
+pyaudio = "*"
+huggingface_hub = "==2.0.0"
+beautifulsoup4 = "*"
+requests = "*"
+pyperclip = "*"
+pillow = "*"
 
 [dev-packages]
 

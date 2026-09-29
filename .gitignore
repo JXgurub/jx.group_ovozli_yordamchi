@@ -117,8 +117,12 @@ celerybeat.pid
 env/
 venv/
 ENV/
+envjarvis/
 env.bak/
 venv.bak/
+engine/cookies.json
+engine/vosk-model-small-uz-0.22/
+engine/vosk-model-small-uz-0.22/
 
 # Spyder project settings
 .spyderproject

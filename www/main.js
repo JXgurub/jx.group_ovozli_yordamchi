@@ -41,7 +41,7 @@ $(document).ready(function () {
     // mic button click event
 
     $("#MicBtn").click(function () { 
-        eel.playAssistantSound()
+        eel.playAssistantSound()()
         $("#Oval").attr("hidden", true);
         $("#SiriWave").attr("hidden", false);
         eel.allCommands()()
@@ -52,7 +52,7 @@ $(document).ready(function () {
         // this would test for whichever key is 40 (down arrow) and the ctrl key at the same time
 
         if (e.key === 'j' && e.metaKey) {
-            eel.playAssistantSound()
+            eel.playAssistantSound()()
             $("#Oval").attr("hidden", true);
             $("#SiriWave").attr("hidden", false);
             eel.allCommands()()
@@ -67,7 +67,7 @@ $(document).ready(function () {
 
             $("#Oval").attr("hidden", true);
             $("#SiriWave").attr("hidden", false);
-            eel.allCommands(message);
+            eel.allCommands(message)();
             $("#chatbox").val("")
             $("#MicBtn").attr('hidden', false);
             $("#SendBtn").attr('hidden', true);

@@ -1,40 +1,64 @@
-import csv
 import sqlite3
+from engine.config import DB_PATH
 
+def init_database():
+    """Database va jadvallarni initialize qilish"""
+    conn = sqlite3.connect(DB_PATH)
+    cursor = conn.cursor()
+    
+    # sys_command table
+    query = "CREATE TABLE IF NOT EXISTS sys_command(id integer primary key, name VARCHAR(100), path VARCHAR(1000))"
+    cursor.execute(query)
+    
+    # web_command table
+    query = "CREATE TABLE IF NOT EXISTS web_command(id integer primary key, name VARCHAR(100), url VARCHAR(1000))"
+    cursor.execute(query)
+    
+    # contacts table
+    query = "CREATE TABLE IF NOT EXISTS contacts(id integer primary key, name VARCHAR(100), phone VARCHAR(20), email VARCHAR(100))"
+    cursor.execute(query)
+    
+    # command_history table
+    query = "CREATE TABLE IF NOT EXISTS command_history(id integer primary key, command TEXT, timestamp DATETIME DEFAULT CURRENT_TIMESTAMP)"
+    cursor.execute(query)
+    
+    conn.commit()
+    
+    # Default data qo'shish
+    add_default_data(cursor, conn)
+    
+    conn.close()
 
-conn = sqlite3.connect("jarvis.db")
+def add_default_data(cursor, conn):
+    """Default ma'lumotlarni qo'shish"""
+    
+    # Check sys_command table
+    cursor.execute("SELECT COUNT(*) FROM sys_command")
+    if cursor.fetchone()[0] == 0:
+        sys_commands = [
+            (None, 'notepad', 'C:\\Windows\\System32\\notepad.exe'),
+            (None, 'calculator', 'C:\\Windows\\System32\\calc.exe'),
+            (None, 'paint', 'C:\\Windows\\System32\\mspaint.exe'),
+        ]
+        cursor.executemany("INSERT INTO sys_command VALUES (?,?,?)", sys_commands)
+    
+    # Check web_command table
+    cursor.execute("SELECT COUNT(*) FROM web_command")
+    if cursor.fetchone()[0] == 0:
+        web_commands = [
+            (None, 'google', 'https://www.google.com/'),
+            (None, 'instagram', 'https://www.instagram.com/'),
+            (None, 'facebook', 'https://www.facebook.com/'),
+            (None, 'youtube', 'https://www.youtube.com/'),
+            (None, 'github', 'https://www.github.com/'),
+        ]
+        cursor.executemany("INSERT INTO web_command VALUES (?,?,?)", web_commands)
+    
+    conn.commit()
 
-cursor = conn.cursor()
-
-
-
-
-#query = "CREATE TABLE IF NOT EXISTS sys_command(id integer primary key, name VARCHAR(100), path VARCHAR(1000))"
-#cursor.execute(query)
-
-
-
-#query = "INSERT INTO sys_command VALUES (null,'android studio', 'C:\\Program Files\\Android\\Android Studio\\bin\\studio64.exe')"
-#cursor.execute(query)
-#conn.commit()
-
-
-
-
-
-query = "CREATE TABLE IF NOT EXISTS web_command(id integer primary key, name VARCHAR(100), url VARCHAR(1000))"
-cursor.execute(query)
-
-
-
-# bu yerda malumotlar bazasiga sayt linklari qo'shiladi
-
-
-query = "INSERT INTO web_command VALUES (null,'instagram', 'https://www.instagram.com/')"
-cursor.execute(query)
-conn.commit()
-
-
+def get_db_connection():
+    """Database ulanishni olish"""
+    return sqlite3.connect(DB_PATH)
 
 
 
