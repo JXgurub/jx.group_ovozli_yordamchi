@@ -3,6 +3,8 @@
 
 A voice-controlled desktop assistant application built with Python, Eel, and Machine Learning.
 
+alexa avozli yordamchi bo'lib bu sizga whatsabda avoz orqali sms yuborish rasim tashlash va malumotlar olishda yordam beradi siz avoz orqali biron narsa so'rasanggiz u sizga text variyadi  va avozda gapirib berish imkoniyatiga ega
+
 ### Features
 
 - **Voice Recognition**: Uzbek language speech recognition (uz-uz)
